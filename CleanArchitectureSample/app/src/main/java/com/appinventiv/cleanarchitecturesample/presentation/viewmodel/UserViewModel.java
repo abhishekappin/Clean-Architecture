@@ -17,16 +17,16 @@ import io.reactivex.disposables.Disposable;
 public class UserViewModel extends ViewModel {
 
     public MutableLiveData<Resource<List<User>>> usersListLiveData = new MediatorLiveData<>();
-    private final UserRepositoryImpl userRepositoryImpl;
+    private final GetUserUseCase userUseCase;
     private MediatorLiveData<Resource<List<User>>> authUser = new MediatorLiveData<>();
     public UserViewModel() {
-        userRepositoryImpl = new UserRepositoryImpl();
+        userUseCase = new GetUserUseCase(new UserRepositoryImpl());
         getUserData();
     }
 
     private void getUserData(){
       usersListLiveData.postValue(Resource.loading(null));
-        new GetUserUseCase(userRepositoryImpl).getUserList().subscribe(new SingleObserver<List<User>>() {
+        userUseCase.getUserList().subscribe(new SingleObserver<List<User>>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
