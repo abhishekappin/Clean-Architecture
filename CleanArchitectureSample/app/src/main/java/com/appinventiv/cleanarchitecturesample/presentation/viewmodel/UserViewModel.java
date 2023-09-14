@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import com.appinventiv.cleanarchitecturesample.data.model.User;
 import com.appinventiv.cleanarchitecturesample.data.remote.Resource;
 import com.appinventiv.cleanarchitecturesample.data.repository.UserRepositoryImpl;
+import com.appinventiv.cleanarchitecturesample.domain.use_case.GetUserUseCase;
 
 import java.util.List;
 
@@ -25,7 +26,7 @@ public class UserViewModel extends ViewModel {
 
     private void getUserData(){
       usersListLiveData.postValue(Resource.loading(null));
-        userRepositoryImpl.getUserList().subscribe(new SingleObserver<List<User>>() {
+        new GetUserUseCase(userRepositoryImpl).getUserList().subscribe(new SingleObserver<List<User>>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
