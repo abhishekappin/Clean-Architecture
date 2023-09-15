@@ -18,7 +18,6 @@ public class UserViewModel extends ViewModel {
 
     public MutableLiveData<Resource<List<User>>> usersListLiveData = new MediatorLiveData<>();
     private final GetUserUseCase userUseCase;
-    private MediatorLiveData<Resource<List<User>>> authUser = new MediatorLiveData<>();
     public UserViewModel() {
         userUseCase = new GetUserUseCase(new UserRepositoryImpl());
         getUserData();

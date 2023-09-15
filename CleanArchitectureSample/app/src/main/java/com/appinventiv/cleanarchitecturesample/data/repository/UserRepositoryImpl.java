@@ -7,6 +7,7 @@ import com.appinventiv.cleanarchitecturesample.domain.repository.UserRepository;
 import java.util.List;
 
 import io.reactivex.Single;
+import io.reactivex.android.schedulers.AndroidSchedulers;
 import io.reactivex.schedulers.Schedulers;
 
 public class UserRepositoryImpl implements UserRepository {
@@ -15,6 +16,7 @@ public class UserRepositoryImpl implements UserRepository {
         return RetrofitInstance.getRetrofitInstance()
                 .getAPIService()
                 .getUserList()
-                .subscribeOn(Schedulers.io());
+                .subscribeOn(Schedulers.io())
+                .observeOn(AndroidSchedulers.mainThread());
     }
 }
