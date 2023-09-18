@@ -3,6 +3,10 @@ package com.appinventiv.cleanarchitecturesample.data.remote;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 
+/**
+ * This is a Google defined generic format to handle the different stages of API Response.
+ * @param <T>
+ */
 public class Resource<T> {
 
     @NonNull public final Status status;
@@ -25,5 +29,8 @@ public class Resource<T> {
         return new Resource<>(Status.LOADING, data, null);
     }
 
+    /**
+     * Enum constants to represent the API response state i.e. SUCCESS, ERROR, LOADING
+     */
     public enum Status { SUCCESS, ERROR, LOADING }
 }

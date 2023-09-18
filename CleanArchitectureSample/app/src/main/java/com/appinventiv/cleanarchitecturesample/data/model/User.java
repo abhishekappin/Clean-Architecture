@@ -2,7 +2,9 @@ package com.appinventiv.cleanarchitecturesample.data.model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
-
+/*
+* This is POJO class for User
+*/
 public class User {
     @SerializedName("id")
     @Expose

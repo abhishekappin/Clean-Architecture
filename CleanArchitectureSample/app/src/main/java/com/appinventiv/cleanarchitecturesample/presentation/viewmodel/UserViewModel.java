@@ -9,11 +9,18 @@ import com.appinventiv.cleanarchitecturesample.data.remote.Resource;
 import com.appinventiv.cleanarchitecturesample.data.repository.UserRepositoryImpl;
 import com.appinventiv.cleanarchitecturesample.domain.use_case.GetUserUseCase;
 
+import org.reactivestreams.Publisher;
+
 import java.util.List;
 
+import io.reactivex.Flowable;
 import io.reactivex.SingleObserver;
 import io.reactivex.disposables.Disposable;
+import io.reactivex.functions.Function;
 
+/**
+ * This viewmodel holds the User related data for Home Activity.
+ */
 public class UserViewModel extends ViewModel {
 
     public MutableLiveData<Resource<List<User>>> usersListLiveData = new MediatorLiveData<>();
@@ -23,9 +30,14 @@ public class UserViewModel extends ViewModel {
         getUserData();
     }
 
+    /**
+     * This method handles the different callback methods of RxJava
+     * and update the Livedata accordingly.
+     */
     private void getUserData(){
       usersListLiveData.postValue(Resource.loading(null));
-        userUseCase.getUserList().subscribe(new SingleObserver<List<User>>() {
+        userUseCase.getUserList()
+                .subscribe(new SingleObserver<List<User>>() {
             @Override
             public void onSubscribe(Disposable d) {
             }
