@@ -9,6 +9,7 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.appinventiv.cleanarchitecturesample.R;
+import com.appinventiv.cleanarchitecturesample.algorithm.BinarySearch;
 import com.appinventiv.cleanarchitecturesample.presentation.adapter.ItemAdapter;
 import com.appinventiv.cleanarchitecturesample.presentation.viewmodel.UserViewModel;
 
@@ -34,6 +35,10 @@ public class HomeActivity extends AppCompatActivity {
         userViewModel = new ViewModelProvider(this).get(UserViewModel.class);
         setUpRecyclerView();
         observeUsers();
+//        findNumber(10);
+//        totalNumberLessThan(10);
+//        totalNumberGreaterThan(10);
+        new BinarySearch().BinarySearchAlgorithm(false);
     }
 
     /**

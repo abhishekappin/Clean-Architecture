@@ -66,6 +66,13 @@ public class RetrofitInstance {
      * This method returns the reference of ApiService Interface
      * @return ApiService
      */
+    /**
+     User: Admin
+     Date: 18-09-2023
+     Time: 22:13
+     Description: This is my method description. 
+     */
+    
     public ApiService getAPIService(){
         return getRetrofit().create(ApiService.class);
     }
